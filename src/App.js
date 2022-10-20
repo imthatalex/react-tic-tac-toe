@@ -2,83 +2,128 @@ import './App.css';
 import {useState} from 'react';
 
 export default function App() {
-  const [isPlayerX, setIsPlayerX] = useState('');
+  const [player, setPlayer] = useState([{move: ''}]);
 
   return (
     <Game 
-      currentPlayer={isPlayerX}
-      nextPlayer={setIsPlayerX}
+      currentPlayer={player}
+      nextPlayer={setPlayer}
     />
   )
 }
 
 function Game({currentPlayer, nextPlayer}){
+  const [playerIndex, setPlayerIndex] = useState(0);
+
+
   return(
     <div className='container'>
+
+
       <div className="row">
         <Square 
-          currentPlayer={currentPlayer}
-          nextPlayer={nextPlayer}
+          playerOne={currentPlayer}
+          playerTwo={nextPlayer}
+          playerIndex={playerIndex}
+          setPlayerIndex={setPlayerIndex}
         />
         <Square 
-          currentPlayer={currentPlayer}
-          nextPlayer={nextPlayer}
+          playerOne={currentPlayer}
+          playerTwo={nextPlayer}
+          playerIndex={playerIndex}
+          setPlayerIndex={setPlayerIndex}
         />
         <Square 
-          currentPlayer={currentPlayer}
-          nextPlayer={nextPlayer}
+          playerOne={currentPlayer}
+          playerTwo={nextPlayer}
+          playerIndex={playerIndex}
+          setPlayerIndex={setPlayerIndex}
         />
       </div>
+
+
       <div className="row">
-      <Square 
-          currentPlayer={currentPlayer}
-          nextPlayer={nextPlayer}
+        <Square 
+          playerOne={currentPlayer}
+          playerTwo={nextPlayer}
+          playerIndex={playerIndex}
+          setPlayerIndex={setPlayerIndex}
         />
         <Square 
-          currentPlayer={currentPlayer}
-          nextPlayer={nextPlayer}
+          playerOne={currentPlayer}
+          playerTwo={nextPlayer}
+          playerIndex={playerIndex}
+          setPlayerIndex={setPlayerIndex}
         />
         <Square 
-          currentPlayer={currentPlayer}
-          nextPlayer={nextPlayer}
+          playerOne={currentPlayer}
+          playerTwo={nextPlayer}
+          playerIndex={playerIndex}
+          setPlayerIndex={setPlayerIndex}
         />
       </div>
+
+
       <div className="row">
-      <Square 
-          currentPlayer={currentPlayer}
-          nextPlayer={nextPlayer}
+        <Square 
+          playerOne={currentPlayer}
+          playerTwo={nextPlayer}
+          playerIndex={playerIndex}
+          setPlayerIndex={setPlayerIndex}
         />
         <Square 
-          currentPlayer={currentPlayer}
-          nextPlayer={nextPlayer}
+          playerOne={currentPlayer}
+          playerTwo={nextPlayer}
+          playerIndex={playerIndex}
+          setPlayerIndex={setPlayerIndex}
         />
         <Square 
-          currentPlayer={currentPlayer}
-          nextPlayer={nextPlayer}
+          playerOne={currentPlayer}
+          playerTwo={nextPlayer}
+          playerIndex={playerIndex}
+          setPlayerIndex={setPlayerIndex}
         />
       </div>
+
+
     </div>
   )
 }
 
 
-function Square({currentPlayer, nextPlayer}){
 
-  function handleClick(){
-    if(currentPlayer === '' || currentPlayer === 'O'){
-      nextPlayer('X');
+
+
+
+function Square({playerOne, playerTwo, playerIndex, setPlayerIndex}){
+
+
+
+  function updatePlayer(){
+    if(playerOne[playerIndex].move === '' || playerOne[playerIndex].move === 'O'){
+      playerTwo([
+        ...playerOne,
+        {move: 'X'}
+      ])
+      setPlayerIndex(playerIndex + 1);
     }
-    if(currentPlayer === 'X'){
-      nextPlayer('O');
+    if(playerOne[playerIndex].move === 'X'){
+      playerTwo([
+        ...playerOne,
+        {move: 'O'}
+      ])
+      setPlayerIndex(playerIndex + 1);
     }
+    console.log(playerIndex);
+    console.log(playerOne);
   }
+  
 
   return(
     <div className="col">
-      <button onClick={handleClick}>{currentPlayer}</button>
+      <button onClick={updatePlayer}>{playerOne[playerIndex].move}</button>
     </div>
 
   )
 }
-
 

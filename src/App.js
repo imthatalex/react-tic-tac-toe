@@ -1,5 +1,5 @@
 import './App.css';
-import {useState} from 'react';
+// import {useState} from 'react';
 import {TicTacToe} from './ticTacToe';
 
 // Learning Functional Programming (No Mutations) : Passing Down Properties : Sharing State & Rendering Elements with Updated/New Values Changing Dependent on User Input
@@ -28,7 +28,7 @@ import {TicTacToe} from './ticTacToe';
 
 
 export default function App() {
-  const [player, setPlayer] = useState([{move: ''}]);
+ //  const [player, setPlayer] = useState([{move: ''}]);
 
 
   // three components : App, Game & Square
@@ -41,7 +41,7 @@ export default function App() {
     </>
   )
 }
-
+/*
 function Game({currentPlayer, nextPlayer}){
   const [playerIndex, setPlayerIndex] = useState(0);
 
@@ -174,3 +174,4 @@ function Square({playerOne, playerTwo, playerIndex, setPlayerIndex}){
 
   )
 }
+*/

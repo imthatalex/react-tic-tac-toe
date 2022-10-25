@@ -1,6 +1,8 @@
 import './App.css';
 import {useState} from 'react';
-import { TutorialGame } from './tutorial';
+import { TutorialGame, ExampleParentComponent } from './tutorial';
+
+// Learning Functional Programming (No Mutations) : Passing Down Properties : Sharing State & Rendering Elements with Updated/New Values Changing Dependent on User Input
 
 
 // problem : when choosing a square, all squares change state, when passing state down to the square, 
@@ -9,6 +11,10 @@ import { TutorialGame } from './tutorial';
 // attempted solutions : create multiple square components, each with their own state, reading from parent useState
 // output : same
 
+// problem : I did not know how to make the currentState of my Square element point to the value of an array using Index
+// solution from tutorial : use a function to render the component and pass in a value prop that will point to the array index which is stored usingState
+// note: in order to update the array with the new value, React is Functional(pure) it does not allow original states to be mutated
+// you must creat a new copy of the array and mutate that copy, and setState to to point to the new array
 
 // From Tutorial
 
@@ -20,6 +26,7 @@ import { TutorialGame } from './tutorial';
 */
 
 
+
 export default function App() {
   const [player, setPlayer] = useState([{move: ''}]);
 
@@ -29,7 +36,10 @@ export default function App() {
   // passed down as props to Game
 
   return (
+    <>
     <TutorialGame/>
+    <ExampleParentComponent/>
+    </>
   )
 }
 
@@ -127,6 +137,7 @@ function Game({currentPlayer, nextPlayer}){
 function Square({playerOne, playerTwo, playerIndex, setPlayerIndex}){
 
   const [isActive, setIsActive] = useState(false);
+  
 
 
   // the updatePlayer function is called onClick

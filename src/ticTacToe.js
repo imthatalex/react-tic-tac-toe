@@ -20,7 +20,7 @@ function Square({value, onClick}){
 // Add the Game component right after the Square component, because we want the Game to be our top level component
 
 
-export function TutorialGame(){
+export function TicTacToe(){
     /*
         In order to make the game work we have to keep track of the state of each square: 
         change their value as the players click them and save those values until the game ends
@@ -42,7 +42,7 @@ export function TutorialGame(){
             return "Draw!"
         }
         else {
-            return "Next Player: " + (isXNext ? 'X' : 'O');
+            return "Current Player: " + (isXNext ? 'X' : 'O');
         }
     }
 
@@ -51,15 +51,15 @@ export function TutorialGame(){
 
 
     // value points to the index in the array
-        function renderSquare(i) {
+        function renderSquare(index) {
             return ( 
             <Square
-                value={squares[i]}
+                value={squares[index]}
                 onClick={() => {
                 // checks to see if the value of square is not empty or if a winner has not been decided
 
                 // prevents double clicking
-                if(squares[i] != null || winner != null ){
+                if(squares[index] != null || winner != null ){
                     return;
                 }
                 //  We can’t change the squares array directly, because it mutates the array, what we can do is make a copy of the array and mutate the copy
@@ -67,7 +67,7 @@ export function TutorialGame(){
                 const nextSquares = squares.slice();
                 // now the copy is mutated
                 // determine whether the square will render X or O based off a boolean value stored in state
-                nextSquares[i] = (isXNext ? 'X' : 'O');
+                nextSquares[index] = (isXNext ? 'X' : 'O');
                   // setSquares : the updaterFunc : must be called in order to update squares(currentState)
                 setSquares(nextSquares);
                 /*
@@ -87,6 +87,7 @@ export function TutorialGame(){
         function renderRestartButton(){
             return(
                 <Restart
+                    value={winner ? 'Play Again ?' : 'Reset'}
                     onClick={() => {
                         // sets all square values back to null
                         setSquares(Array(9).fill(null));
@@ -109,6 +110,8 @@ export function TutorialGame(){
 
     return(
         <div className="container">
+            <h1 className="game-heading">Tic Tac Toe </h1>
+            <p className="smolText">This Game was created using React Hooks. </p>
             <div className="row">
                 {renderSquare(0)}
                 {renderSquare(1)}
@@ -124,7 +127,7 @@ export function TutorialGame(){
                 {renderSquare(7)}
                 {renderSquare(8)}
             </div>
-            <div className="row">
+            <div className="row controls">
                 <div className="col">
                     {getStatus()}
                 </div>
@@ -146,9 +149,9 @@ will be passed on to the Restart component as a prop.
 
 */
 
-function Restart({onClick}){
+function Restart({onClick, value}){
     return (
-        <button onClick={onClick}>Play Again</button>
+        <button className="reset-bttn" onClick={onClick}>{value}</button>
     )
 }
 
@@ -205,48 +208,3 @@ function isBoardFull(squares){
 
 
 
-
-// Tutorial Practice
-
-
-// Create the Component, with a VALUE you want to UPDATE using an ONCLICK
-function ExampleComponent({value, onClick}){
-    return(
-        <div className="col">
-            <button className="button" onClick={onClick}>{value}</button>
-        </div>
-    )
-}
-
-// The Parent Component, has to hold STATE, to ensure each Component SHARES STATE
-// Render the Component with a Function Call in order to CREATE an Array, in which then you
-// Can point the VALUE of the Child Component to the Index of that Array
-export function ExampleParentComponent(){
-    const [testState, setTestState] = useState(Array(3).fill(null));
-    const [player, setPlayer] = useState(true);
-
-    function renderButton(index){
-        return(
-            <ExampleComponent
-                value={testState[index]}
-                onClick={() => {
-                    const copyButtons = testState.slice();
-                    copyButtons[index] = player ? 'X' : 'O';
-                    setTestState(copyButtons);
-                    setPlayer(!player);
-                }}
-            />
-        )
-    }
-
-    return(
-        <div className="container">
-            <div className="row">
-                {renderButton(0)}
-                {renderButton(1)}
-                {renderButton(2)}
-            </div>
-        </div>
-    )
-
-}

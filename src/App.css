@@ -1,21 +1,60 @@
-.container {
-  border: 1px solid green;
-  margin-top: 40px;
-  width: 300px;
+body {
+  background-color: #222323;
 }
 
-.row {
-  border: 1px solid blue;
+.container {
+  margin-top: 40px;
+  width: 30%;
+  color: #fff;
+  text-align: center;
+}
+
+.game-heading {
+  font-weight: 600;
+  padding: 30px 0;
+}
+
+.smolText {
+  font-size: 0.5em;
 }
 
 .col {
-  border: 1px solid green;
-  padding: 20px 0;
-  height: 100%;
-  width: 33%;
+  border: 0.2px solid #fff;
+  height: 105px;
+  width: 100%;
+  text-align: center;
+  margin: none !important;
 }
 
 .button {
-  width: 40px;
-  height: 40px;
+  width: 100px;
+  height: 100px;
+  background-color: #222323;
+  border: none;
+  color: #fff;
+  font-size: 4em;
+  margin: none !important;
+}
+
+.button:hover {
+  cursor: pointer;
+}
+
+.controls {
+  margin-top: 40px;
+}
+
+.controls .col {
+  border: none;
+  text-align: center;
+  display: grid;
+  align-items: center;
+}
+
+.reset-bttn {
+  background-color: orange;
+  border-radius: 12.5em;
+  border: none;
+  padding: 10px 20px;
+  color: #fff;
 }

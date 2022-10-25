@@ -1,6 +1,6 @@
 import './App.css';
 import {useState} from 'react';
-import { TutorialGame, ExampleParentComponent } from './tutorial';
+import {TicTacToe} from './ticTacToe';
 
 // Learning Functional Programming (No Mutations) : Passing Down Properties : Sharing State & Rendering Elements with Updated/New Values Changing Dependent on User Input
 
@@ -37,8 +37,7 @@ export default function App() {
 
   return (
     <>
-    <TutorialGame/>
-    <ExampleParentComponent/>
+    <TicTacToe/>
     </>
   )
 }

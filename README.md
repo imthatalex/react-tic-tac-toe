@@ -10,5 +10,5 @@ The game ends when either the player or the computer wins or there is a draw
 A reset button allows the player to start a new game
 
 ### Built With
-React - JavaScript library for building user interfaces
-npm - Package manager for JavaScript
+- React - JavaScript library for building user interfaces
+- npm - Package manager for JavaScript

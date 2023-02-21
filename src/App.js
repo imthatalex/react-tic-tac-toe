@@ -1,177 +1,143 @@
 import './App.css';
-// import {useState} from 'react';
-import {TicTacToe} from './ticTacToe';
+import { useState } from 'react';
 
-// Learning Functional Programming (No Mutations) : Passing Down Properties : Sharing State & Rendering Elements with Updated/New Values Changing Dependent on User Input
-
-
-// problem : when choosing a square, all squares change state, when passing state down to the square, 
-// each square changes state but they don't read from the same history
-
-// attempted solutions : create multiple square components, each with their own state, reading from parent useState
-// output : same
-
-// problem : I did not know how to make the currentState of my Square element point to the value of an array using Index
-// solution from tutorial : use a function to render the component and pass in a value prop that will point to the array index which is stored usingState
-// note: in order to update the array with the new value, React is Functional(pure) it does not allow original states to be mutated
-// you must creat a new copy of the array and mutate that copy, and setState to to point to the new array
-
-// From Tutorial
-
-/*
-  If we don’t have a way to tell React when to re-render a component, 
-  either React will have to constantly re-render all the components or 
-  constantly run an algorithm that checks for changes in components’ state, 
-  both options are not performant.
-*/
-
-
-
-export default function App() {
- //  const [player, setPlayer] = useState([{move: ''}]);
-
-
-  // three components : App, Game & Square
-  // App holds playerState : sets the next move, X or O
-  // passed down as props to Game
-
-  return (
-    <>
-    <TicTacToe/>
-    </>
-  )
-}
-/*
-function Game({currentPlayer, nextPlayer}){
-  const [playerIndex, setPlayerIndex] = useState(0);
-
-  // Game holds playerIndex state
-  // playerIndex state, dictates who's turn it is, by adding moves to the array, it also acts as a history
-  // Idea was, to test, what was the last move, if move was X, then next move is O and so forth
-
-
-  // Nine square components, properties passed are the currentstate of index and an index updater function
-  // along with the players passed from game
-
-  return(
-    <div className='container'>
-
-
-    
-      <div className="row">
-        <Square 
-          playerOne={currentPlayer}
-          playerTwo={nextPlayer}
-          playerIndex={playerIndex}
-          setPlayerIndex={setPlayerIndex}
-        />
-        <Square 
-          playerOne={currentPlayer}
-          playerTwo={nextPlayer}
-          playerIndex={playerIndex}
-          setPlayerIndex={setPlayerIndex}
-        />
-        <Square 
-          playerOne={currentPlayer}
-          playerTwo={nextPlayer}
-          playerIndex={playerIndex}
-          setPlayerIndex={setPlayerIndex}
-        />
-      </div>
-
-
-      <div className="row">
-        <Square 
-          playerOne={currentPlayer}
-          playerTwo={nextPlayer}
-          playerIndex={playerIndex}
-          setPlayerIndex={setPlayerIndex}
-        />
-        <Square 
-          playerOne={currentPlayer}
-          playerTwo={nextPlayer}
-          playerIndex={playerIndex}
-          setPlayerIndex={setPlayerIndex}
-        />
-        <Square 
-          playerOne={currentPlayer}
-          playerTwo={nextPlayer}
-          playerIndex={playerIndex}
-          setPlayerIndex={setPlayerIndex}
-        />
-      </div>
-
-
-      <div className="row">
-        <Square 
-          playerOne={currentPlayer}
-          playerTwo={nextPlayer}
-          playerIndex={playerIndex}
-          setPlayerIndex={setPlayerIndex}
-        />
-        <Square 
-          playerOne={currentPlayer}
-          playerTwo={nextPlayer}
-          playerIndex={playerIndex}
-          setPlayerIndex={setPlayerIndex}
-        />
-        <Square 
-          playerOne={currentPlayer}
-          playerTwo={nextPlayer}
-          playerIndex={playerIndex}
-          setPlayerIndex={setPlayerIndex}
-        />
-      </div>
-
-
-    </div>
-  )
+function Square({ value, onClick }) {
+    return (
+        <div className="squareCol">
+            <button className="squareButton" onClick={onClick}>{value}</button>
+        </div>
+    )
 }
 
+export default function TicTacToe() {
+    const [squares, setSquares] = useState(Array(9).fill(null));
 
+    const [isXNext, setIsXNext] = useState(true);
+    const winner = calculateWinner(squares);
 
-
-// Square component has a state that disables the button after one move, to ensure the player cannot change the output of the square chosen
-
-function Square({playerOne, playerTwo, playerIndex, setPlayerIndex}){
-
-  const [isActive, setIsActive] = useState(false);
-  
-
-
-  // the updatePlayer function is called onClick
-  // it asks if currentPlayer[index].move is empty or 'O', return 'X
-  // this is being tracked when the currentMove is added to the array
-  // it then increases the index by 1, to move on to the next move
-
-  function updatePlayer(){
-    if(playerOne[playerIndex].move === '' || playerOne[playerIndex].move === 'O'){
-      playerTwo([
-        ...playerOne,
-        {move: 'X'}
-      ])
-      setPlayerIndex(playerIndex + 1);
-      setIsActive(true);
+    function getStatus() {
+        if (winner) {
+            return "Winner: " + winner;
+        }
+        else if (isBoardFull(squares)) {
+            return "Draw!"
+        }
+        else {
+            return "Current Player: " + (isXNext ? 'X' : 'O');
+        }
     }
-    if(playerOne[playerIndex].move === 'X'){
-      playerTwo([
-        ...playerOne,
-        {move: 'O'}
-      ])
-      setPlayerIndex(playerIndex + 1);
-      setIsActive(true);
 
+    function renderSquare(index) {
+        return (
+            <Square
+                value={squares[index]}
+                onClick={() => {
+
+                    // checks to see if the value of square is not empty or if a winner has not been decided
+                    // prevents double clicking
+                    if (squares[index] != null || winner != null) {
+                        return;
+                    }
+
+                    const nextSquares = squares.slice();
+                    // determine whether the square will render X or O based off a boolean value stored in state
+                    nextSquares[index] = (isXNext ? 'X' : 'O');
+
+                    setSquares(nextSquares);
+                    // toggle the turn for the player by updating state
+                    setIsXNext(!isXNext);
+                }}
+            />
+        );
     }
-    console.log(playerIndex);
-    console.log(playerOne);
-  }
-  
 
-  return(
-    <div className="col">
-      <button style={{opacity: isActive ? '1' : '0'}} onClick={updatePlayer}>{playerOne[playerIndex].move}</button>
-    </div>
 
-  )
+    // renderRestart Func will simply display the button, the handler function is in the return statement
+    function renderRestartButton() {
+        return (
+            <Restart
+                value={winner ? 'Play Again ?' : 'Reset'}
+                onClick={() => {
+                    // sets all square values back to null
+                    setSquares(Array(9).fill(null));
+                    // changes player 1 back to X
+                    setIsXNext(true);
+                }}
+            />
+        )
+    }
+
+    return (
+        <div className="container">
+            <h1 className="heading">Tic Tac Toe </h1>
+            <div className="gameContainer">
+                <div className="row">
+                    {renderSquare(0)}
+                    {renderSquare(1)}
+                    {renderSquare(2)}
+                </div>
+                <div className="row">
+                    {renderSquare(3)}
+                    {renderSquare(4)}
+                    {renderSquare(5)}
+                </div>
+                <div className="row">
+                    {renderSquare(6)}
+                    {renderSquare(7)}
+                    {renderSquare(8)}
+                </div>
+            </div>
+            <div className="controlRow">
+                <div className="col">
+                    {getStatus()}
+                </div>
+                <div className="col">
+                    {renderRestartButton()}
+                </div>
+            </div>
+        </div>
+    )
 }
-*/
+
+function Restart({ onClick, value }) {
+    return (
+        <button className="resetButton" onClick={onClick}>{value}</button>
+    )
+}
+
+function calculateWinner(squares) {
+    // checks all the possible lines in this game that could result in a win
+    const possibleLines = [
+        [0, 1, 2],
+        [3, 4, 5],
+        [6, 7, 8],
+        [0, 3, 6],
+        [1, 4, 7],
+        [2, 5, 8],
+        [0, 4, 8],
+        [2, 4, 6]
+    ];
+
+    for (let i = 0; i < possibleLines.length; i++) {
+        const [a, b, c] = possibleLines[i];
+        if (squares[a] && squares[a] === squares[b] && squares[a] && squares[a] === squares[c]) {
+            return squares[a];
+        }
+    }
+}
+
+
+function isBoardFull(squares) {
+    for (let i = 0; i < squares.length; i++) {
+        if (squares[i] == null) {
+            return false;
+        }
+    }
+    return true;
+}
+
+
+
+
+
+

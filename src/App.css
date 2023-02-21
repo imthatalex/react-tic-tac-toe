@@ -1,60 +1,90 @@
 body {
   background-color: #222323;
+  color: #FFF;
+  height: 100vh;
+  display: grid;
+  align-items: center;
+  justify-content: center;
 }
 
-.container {
-  margin-top: 40px;
-  width: 30%;
-  color: #fff;
+.heading {
   text-align: center;
 }
 
-.game-heading {
-  font-weight: 600;
-  padding: 30px 0;
+.gameContainer {
+  display: grid;
+  grid-template-columns: repeat(3, 150px);
+  justify-content: center;
+  align-items: center;
+  gap: 0px;
 }
 
-.smolText {
-  font-size: 0.5em;
+.squareCol {
+  height: 150px;
+  width: 150px;
 }
 
-.col {
-  border: 0.2px solid #fff;
-  height: 105px;
-  width: 100%;
-  text-align: center;
-  margin: none !important;
-}
-
-.button {
-  width: 100px;
-  height: 100px;
+.squareButton {
+  height: 150px;
+  width: 150px;
   background-color: #222323;
-  border: none;
-  color: #fff;
-  font-size: 4em;
-  margin: none !important;
+  margin-top: -2px;
+  font-size: 4rem;
+  color: #FFF;
+  border: 0.2px solid #FFF;
 }
 
-.button:hover {
+.controlRow {
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.controlRow .col {
+  margin: 0 10px;
+  display: grid;
+  align-items: center;
+  font-size: 1rem;
+}
+
+.controlRow .col button {
+  background-color: orange;
+  color: #FFF;
+  border: none;
+  padding: 8px 16px;
   cursor: pointer;
 }
 
-.controls {
-  margin-top: 40px;
+@media screen and (max-width: 500px){
+  .gameContainer {
+      grid-template-columns: repeat(3, 120px);
+    }
+
+    .squareCol {
+      height: 120px;
+      width: 120px;
+    }
+  
+    .squareButton {
+      height: 120px;
+      width: 120px;
+    }
 }
 
-.controls .col {
-  border: none;
-  text-align: center;
-  display: grid;
-  align-items: center;
-}
+@media screen and (max-width: 350px){
+  .gameContainer {
+    grid-template-columns: repeat(3, 80px);
+  }
 
-.reset-bttn {
-  background-color: orange;
-  border-radius: 12.5em;
-  border: none;
-  padding: 10px 20px;
-  color: #fff;
+  .squareCol {
+    height: 80px;
+    width: 80px;
+  }
+
+  .squareButton {
+    height: 80px;
+    width: 80px;
+  }
 }

@@ -22,6 +22,7 @@ body {
 .squareCol {
   height: 150px;
   width: 150px;
+  text-align: center;
 }
 
 .squareButton {

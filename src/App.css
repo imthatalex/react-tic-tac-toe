@@ -35,6 +35,9 @@ body {
   border: 0.2px solid #FFF;
   text-align: center;
   color: red;
+  display: grid;
+  align-items: center;
+  justify-content: center;
   line-height: 1;
 }
 

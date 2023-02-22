@@ -17,12 +17,16 @@ body {
   justify-content: center;
   align-items: center;
   gap: 0px;
+  margin: auto;
+  height: 100%;
+  width: 100%;
 }
 
 .squareCol {
   height: 150px;
   width: 150px;
   text-align: center;
+  line-height: 1;
 }
 
 .squareButton {

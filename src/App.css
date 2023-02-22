@@ -33,6 +33,8 @@ body {
   font-size: 4rem;
   color: #FFF;
   border: 0.2px solid #FFF;
+  text-align: center;
+  color: red;
 }
 
 .controlRow {

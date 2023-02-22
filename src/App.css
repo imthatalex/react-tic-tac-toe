@@ -23,8 +23,8 @@ body {
 }
 
 .squareCol {
-  height: 150px;
-  width: 150px;
+  height: 155px;
+  width: 155px;
   text-align: center;
   line-height: 1;
 }
@@ -33,7 +33,7 @@ body {
   height: 150px;
   width: 150px;
   background-color: #222323;
-  margin-top: -2px;
+  margin-top: -5px;
   font-size: 4rem;
   color: #FFF;
   border: 0.2px solid #FFF;

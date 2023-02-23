@@ -13,6 +13,10 @@ body {
   text-align: center;
 }
 
+.container {
+  position: relative;
+}
+
 .gameContainer {
   height: 456px;
   width: 450px;
@@ -22,6 +26,11 @@ body {
   align-items: center;
   gap: 0px;
   margin: auto;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }
 
 .squareButtonNoShow {

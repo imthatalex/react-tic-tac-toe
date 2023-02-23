@@ -1,9 +1,9 @@
 import './App.css';
 import { useState } from 'react';
 
-function Square({ value, onClick }) {
+function Square({ value, onClick, className }) {
   return (
-    <div className="squareButton" onClick={onClick}>X{value}</div>
+    <div className={className} onClick={onClick}>{value}</div>
   )
 }
 
@@ -28,9 +28,9 @@ export default function TicTacToe() {
   function renderSquare(index) {
     return (
       <Square
-        value={squares[index]}
+        value={squares[index] == null ? "X" : squares[index]}
+        className={squares[index] == null ? "squareButtonNoShow" : "squareButtonShow"}
         onClick={() => {
-
           // checks to see if the value of square is not empty or if a winner has not been decided
           // prevents double clicking
           if (squares[index] != null || winner != null) {

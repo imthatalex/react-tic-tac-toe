@@ -24,13 +24,26 @@ body {
   margin: auto;
 }
 
-.squareButton {
+.squareButtonNoShow {
   height: 150px;
   width: 150px;
   background-color: #222323;
   font-size: 1rem;
   text-align: center;
-  color: purple;
+  color: #222323;
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid purple;
+}
+
+.squareButtonShow {
+  height: 150px;
+  width: 150px;
+  background-color: #222323;
+  font-size: 1rem;
+  text-align: center;
+  color: #FFF;
   display: grid;
   align-items: center;
   justify-content: center;
@@ -69,14 +82,12 @@ body {
       height: 366px;
       width: 360px;
     }
-
-    .squareCol {
+    .squareButtonNoShow {
       height: 120px;
       width: 120px;
-      line-height: 120px;
     }
   
-    .squareButton {
+    .squareButtonShow {
       height: 120px;
       width: 120px;
     }
@@ -88,14 +99,13 @@ body {
     width: 240px;
   }
 
-  .squareCol {
-    height: 80px;
-    width: 80px;
-    line-height: 80px;
-  }
-
-  .squareButton {
-    height: 80px;
-    width: 80px;
-  }
+  .squareButtonNoShow {
+      height: 80px;
+      width: 80px;
+    }
+  
+    .squareButtonShow {
+      height: 80px;
+      width: 80px;
+    }
 }

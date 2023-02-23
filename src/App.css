@@ -8,16 +8,16 @@ body {
   overflow-y: hidden;
 }
 
+.container {
+  position: relative;
+}
+
 .heading {
   text-align: center;
   position: fixed;
   top: 40px;
   left: 0;
   right: 0;
-}
-
-.container {
-  position: relative;
 }
 
 .gameContainer {
@@ -36,20 +36,7 @@ body {
   bottom: 0;
 }
 
-.squareButtonNoShow {
-  height: 150px;
-  width: 150px;
-  background-color: #222323;
-  font-size: 4rem;
-  text-align: center;
-  color: #222323;
-  display: grid;
-  align-items: center;
-  justify-content: center;
-  border: 0.2px solid grey;
-}
-
-.squareButtonShow {
+.square {
   height: 150px;
   width: 150px;
   background-color: #222323;
@@ -59,7 +46,8 @@ body {
   display: grid;
   align-items: center;
   justify-content: center;
-  border: 0.2px solid grey;
+  border: 1px solid grey;
+  cursor: pointer;
 }
 
 .controlRow {
@@ -71,7 +59,7 @@ body {
   position: fixed;
   left: 0;
   right: 0;
-  bottom: 100px;
+  bottom: 70px;
 }
 
 .controlRow .col {
@@ -89,35 +77,72 @@ body {
   cursor: pointer;
 }
 
-@media screen and (max-width: 500px){
+/* WIDTH */
+
+@media screen and (max-width: 1180px){
   .gameContainer {
       height: 366px;
       width: 360px;
     }
-    .squareButtonNoShow {
-      height: 120px;
-      width: 120px;
-    }
   
-    .squareButtonShow {
+    .square {
       height: 120px;
       width: 120px;
     }
 }
 
-@media screen and (max-width: 350px){
+@media screen and (max-width: 380px){
   .gameContainer {
     height: 246px;
     width: 240px;
   }
 
-  .squareButtonNoShow {
-      height: 80px;
-      width: 80px;
-    }
+  .square {
+    height: 80px;
+    width: 80px;
+  }
+}
+
+/* HEIGHT */ 
+
+@media screen and (max-height: 1480px) {
+  .heading {
+    top: 400px;
+  }
+
+  .controlRow {
+    bottom: 400px;
+  }
+}
+
+@media screen and (max-height: 1280px){
+  .heading {
+    top: 180px;
+  }
+
+  .controlRow {
+    bottom: 180px;
+  }
+}
+
+@media screen and (max-height: 1000px) {
+  .heading {
+    top: 100px;
+  }
+
+  .controlRow {
+    bottom: 100px;
+  }
+}
+
+@media screen and (max-height: 800px){
+  .heading {
+      top: 50px;
+  }
   
-    .squareButtonShow {
-      height: 80px;
-      width: 80px;
+    .controlRow {
+      bottom: 50px;
     }
 }
+
+

@@ -5,6 +5,7 @@ body {
   display: grid;
   align-items: center;
   justify-content: center;
+  border: 1px solid red;
 }
 
 .heading {
@@ -12,14 +13,15 @@ body {
 }
 
 .gameContainer {
+  height: 450px;
+  width: 450px;
   display: grid;
   grid-template-columns: repeat(3, 150px);
   justify-content: center;
   align-items: center;
   gap: 0px;
   margin: auto;
-  height: 100%;
-  width: 100%;
+  border: 1px solid green;
 }
 
 .squareCol {
@@ -30,21 +32,19 @@ body {
   display: grid;
   justify-content: center;
   align-items: center;
-  border: 0.2px solid #FFF;
 }
 
 .squareButton {
-  height: 140px;
-  width: 140px;
+  height: 150px;
+  width: 150px;
   background-color: #222323;
   font-size: 4rem;
-  color: #FFF;
-  border: none;
   text-align: center;
-  color: orange;
-  display: flex;
+  color: purple;
+  display: grid;
   align-items: center;
   justify-content: center;
+  border: 1px solid purple;
 }
 
 .controlRow {
@@ -73,6 +73,8 @@ body {
 @media screen and (max-width: 500px){
   .gameContainer {
       grid-template-columns: repeat(3, 120px);
+      height: 360px;
+      width: 360px;
     }
 
     .squareCol {
@@ -89,6 +91,8 @@ body {
 @media screen and (max-width: 350px){
   .gameContainer {
     grid-template-columns: repeat(3, 80px);
+    height: 240px;
+    width: 240px;
   }
 
   .squareCol {

@@ -17,12 +17,10 @@ body {
   height: 456px;
   width: 450px;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
   justify-content: center;
   align-items: center;
   gap: 0px;
   margin: auto;
-  overflow-y: hidden;
 }
 
 .squareCol {
@@ -77,7 +75,6 @@ body {
 
 @media screen and (max-width: 500px){
   .gameContainer {
-      grid-template-columns: repeat(3, 1fr);
       height: 366px;
       width: 360px;
     }
@@ -96,7 +93,6 @@ body {
 
 @media screen and (max-width: 350px){
   .gameContainer {
-    grid-template-columns: repeat(3, 80px);
     height: 246px;
     width: 240px;
   }

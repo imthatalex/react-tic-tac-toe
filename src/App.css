@@ -5,12 +5,15 @@ body {
   display: grid;
   align-items: center;
   justify-content: center;
-  border: 1px solid red;
   overflow-y: hidden;
 }
 
 .heading {
   text-align: center;
+  position: fixed;
+  top: 40px;
+  left: 0;
+  right: 0;
 }
 
 .container {
@@ -26,7 +29,7 @@ body {
   align-items: center;
   gap: 0px;
   margin: auto;
-  position: sticky;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
@@ -37,30 +40,26 @@ body {
   height: 150px;
   width: 150px;
   background-color: #222323;
-  font-size: 1rem;
+  font-size: 4rem;
   text-align: center;
   color: #222323;
   display: grid;
   align-items: center;
   justify-content: center;
-  border: 1px solid purple;
+  border: 0.2px solid grey;
 }
 
 .squareButtonShow {
   height: 150px;
   width: 150px;
   background-color: #222323;
-  font-size: 1rem;
+  font-size: 4rem;
   text-align: center;
   color: #FFF;
   display: grid;
   align-items: center;
   justify-content: center;
-  border: 1px solid purple;
-}
-
-.row {
-  border: 1px solid yellow;
+  border: 0.2px solid grey;
 }
 
 .controlRow {
@@ -69,6 +68,10 @@ body {
   flex-direction: row;
   justify-content: center;
   margin-top: 20px;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 100px;
 }
 
 .controlRow .col {

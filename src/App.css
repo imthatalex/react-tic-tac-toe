@@ -13,10 +13,10 @@ body {
 }
 
 .gameContainer {
-  height: 450px;
+  height: 456px;
   width: 450px;
   display: grid;
-  grid-template-columns: repeat(3, 150px);
+  grid-template-columns: repeat(3, 1fr);
   justify-content: center;
   align-items: center;
   gap: 0px;
@@ -27,6 +27,7 @@ body {
 .squareCol {
   height: 150px;
   width: 150px;
+  line-height: 150px;
   text-align: center;
   line-height: 1;
   display: grid;
@@ -72,14 +73,15 @@ body {
 
 @media screen and (max-width: 500px){
   .gameContainer {
-      grid-template-columns: repeat(3, 120px);
-      height: 360px;
+      grid-template-columns: repeat(3, 1fr);
+      height: 366px;
       width: 360px;
     }
 
     .squareCol {
       height: 120px;
       width: 120px;
+      line-height: 120px;
     }
   
     .squareButton {
@@ -91,13 +93,14 @@ body {
 @media screen and (max-width: 350px){
   .gameContainer {
     grid-template-columns: repeat(3, 80px);
-    height: 240px;
+    height: 246px;
     width: 240px;
   }
 
   .squareCol {
     height: 80px;
     width: 80px;
+    line-height: 80px;
   }
 
   .squareButton {

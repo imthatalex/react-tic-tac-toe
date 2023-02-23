@@ -6,6 +6,7 @@ body {
   align-items: center;
   justify-content: center;
   border: 1px solid red;
+  overflow-y: hidden;
 }
 
 .heading {
@@ -28,7 +29,6 @@ body {
   width: 150px;
   line-height: 150px;
   text-align: center;
-  line-height: 1;
   display: grid;
   justify-content: center;
   align-items: center;

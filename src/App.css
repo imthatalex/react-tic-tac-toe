@@ -30,15 +30,16 @@ body {
   display: grid;
   justify-content: center;
   align-items: center;
+  border: 0.2px solid #FFF;
 }
 
 .squareButton {
-  height: 150px;
-  width: 150px;
+  height: 140px;
+  width: 140px;
   background-color: #222323;
   font-size: 4rem;
   color: #FFF;
-  border: 0.2px solid #FFF;
+  border: none;
   text-align: center;
   color: orange;
   display: flex;

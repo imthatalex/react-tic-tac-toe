@@ -23,17 +23,19 @@ body {
 }
 
 .squareCol {
-  height: 155px;
-  width: 155px;
+  height: 150px;
+  width: 150px;
   text-align: center;
   line-height: 1;
+  display: grid;
+  justify-content: center;
+  align-items: center;
 }
 
 .squareButton {
   height: 150px;
   width: 150px;
   background-color: #222323;
-  margin-top: -5px;
   font-size: 4rem;
   color: #FFF;
   border: 0.2px solid #FFF;
